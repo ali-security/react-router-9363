@@ -1,10 +1,7 @@
 name: 🥺 No Response
 
 on:
-  schedule:
-    # Schedule for five minutes after the hour, every hour
-    - cron: "5 * * * *"
-
+  workflow_dispatch:
 permissions:
   issues: write
   pull-requests: write
@@ -12,7 +9,7 @@ permissions:
 jobs:
   stale:
     if: github.repository == 'remix-run/react-router'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: 🥺 Handle Ghosting
         uses: actions/stale@v8

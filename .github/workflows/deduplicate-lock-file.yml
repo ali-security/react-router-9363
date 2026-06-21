@@ -14,7 +14,7 @@ concurrency:
 jobs:
   format:
     if: github.repository == 'remix-run/react-router'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - name: ⬇️ Checkout repo
@@ -26,8 +26,8 @@ jobs:
       - name: ⎔ Setup node
         uses: actions/setup-node@v4
         with:
-          node-version-file: ".nvmrc"
-          cache: "pnpm"
+          node-version-file: .nvmrc
+          cache: pnpm
 
       - name: ⚙️ Dedupe lock file
         run: pnpm dedupe && rm -rf ./node_modules && pnpm install

@@ -2,9 +2,6 @@ name: 🌒 Nightly Release
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "0 7 * * *" # every day at 12AM PST
-
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -22,7 +19,7 @@ jobs:
   nightly:
     name: 🌒 Nightly Release
     if: github.repository == 'remix-run/react-router'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     outputs:
       # allows this to be used in the `comment` job below - will be undefined
       # if there's no release necessary
@@ -42,8 +39,8 @@ jobs:
       - name: ⎔ Setup node
         uses: actions/setup-node@v4
         with:
-          node-version-file: ".nvmrc"
-          cache: "pnpm"
+          node-version-file: .nvmrc
+          cache: pnpm
 
       - name: 📥 Install deps
         run: pnpm install --frozen-lockfile

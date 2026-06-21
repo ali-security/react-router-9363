@@ -6,6 +6,7 @@ on:
       - main
       - dev
 
+      - master
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -13,7 +14,7 @@ concurrency:
 jobs:
   format:
     if: github.repository == 'remix-run/react-router'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - name: ⬇️ Checkout repo
@@ -28,7 +29,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           cache: pnpm
-          node-version-file: ".nvmrc"
+          node-version-file: .nvmrc
 
       - name: 📥 Install deps
         run: pnpm install --frozen-lockfile

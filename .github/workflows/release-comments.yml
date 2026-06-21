@@ -7,7 +7,7 @@ jobs:
   comment:
     name: 📝 Comment on related issues and pull requests
     if: github.repository == 'remix-run/react-router'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: ⬇️ Checkout repo
         uses: actions/checkout@v4
@@ -17,5 +17,5 @@ jobs:
       - name: 📝 Comment on related issues and pull requests
         uses: remix-run/release-comment-action@v0.4.1
         with:
-          DIRECTORY_TO_CHECK: "./packages"
-          PACKAGE_NAME: "react-router"
+          DIRECTORY_TO_CHECK: ./packages
+          PACKAGE_NAME: react-router

@@ -5,15 +5,16 @@ on:
     branches:
       - main
       - dev
+      - master
     tags-ignore:
       - v*
     paths-ignore:
-      - "docs/**"
-      - "**/README.md"
+      - docs/**
+      - '**/README.md'
   pull_request:
     paths-ignore:
-      - "docs/**"
-      - "**/*.md"
+      - docs/**
+      - '**/*.md'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -21,7 +22,7 @@ concurrency:
 
 jobs:
   test:
-    name: "🧪 Test: (Node: ${{ matrix.node }})"
+    name: '🧪 Test: (Node: ${{ matrix.node }})'
     strategy:
       fail-fast: false
       matrix:
@@ -29,7 +30,7 @@ jobs:
           - 16
           - 18
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - name: ⬇️ Checkout repo
